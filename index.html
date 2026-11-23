@@ -1,0 +1,1534 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大赛每日在线爆料平台_视频爆料社区,每日追踪赛事热点</title>
+<meta name="description" content="大赛每日在线爆料平台是聚焦赛事爆料的视频社区官方网站，以原创正版高清内容持续追踪各类大赛动态，汇聚创作者与企业，构建值得信赖的内容生态。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f1724'/%3E%3Cpath d='M18 22h28v20H18z' fill='none' stroke='%23ff4d3d' stroke-width='4'/%3E%3Cpath d='M27 28l12 4-12 4z' fill='%23ffd166'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bk-navy:#0f1724;
+  --bk-navy2:#16202f;
+  --bk-ink:#1b2431;
+  --bk-paper:#f4f6fa;
+  --bk-white:#ffffff;
+  --bk-red:#e63946;
+  --bk-red-deep:#c1121f;
+  --bk-gold:#ffd166;
+  --bk-muted:#5d6b7d;
+  --bk-line:#dfe5ee;
+  --bk-radius:16px;
+  --bk-shadow:0 12px 30px rgba(15,23,36,.10);
+  --bk-head:118px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  background:var(--bk-paper);
+  color:var(--bk-ink);
+  line-height:1.75;
+  font-size:16px;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{margin:0;line-height:1.3;font-weight:800}
+p{margin:0}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+.bk-wrap{width:min(1180px,92vw);margin:0 auto}
+.bk-section{padding:64px 0}
+.bk-section-head{margin-bottom:32px}
+.bk-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;letter-spacing:.18em;font-weight:700;
+  color:var(--bk-red);text-transform:uppercase;
+}
+.bk-eyebrow::before{content:"";width:22px;height:2px;background:var(--bk-red)}
+.bk-h2{font-size:clamp(24px,3.2vw,34px);margin-top:10px;color:var(--bk-navy)}
+.bk-sub{color:var(--bk-muted);margin-top:10px;max-width:760px}
+.bk-keyword{color:var(--bk-red-deep)}
+
+/* ===== 吸顶：公告条 + 页头 ===== */
+.bk-sticky{position:sticky;top:0;z-index:80}
+.bk-anno{
+  background:linear-gradient(90deg,var(--bk-navy) 0%,#233349 60%,#2d4057 100%);
+  color:#e8eef8;font-size:13.5px;
+}
+.bk-anno-inner{
+  display:flex;align-items:center;gap:12px;padding:9px 0;
+  overflow:hidden;
+}
+.bk-anno-tag{
+  flex:none;background:var(--bk-red);color:#fff;font-weight:800;
+  font-size:11px;letter-spacing:.08em;padding:3px 9px;border-radius:999px;
+}
+.bk-anno-text{
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.bk-anno-text b{color:var(--bk-gold);font-weight:700}
+.bk-anno-more{flex:none;margin-left:auto;color:var(--bk-gold);font-weight:700;font-size:12.5px;border-bottom:1px dashed rgba(255,209,102,.6)}
+
+.bk-header{
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--bk-line);
+  box-shadow:0 4px 18px rgba(15,23,36,.05);
+}
+.bk-header-inner{
+  display:flex;align-items:center;gap:22px;padding:14px 0;
+}
+.bk-logo{display:flex;align-items:center;gap:10px;flex:none}
+.bk-logo-mark{
+  width:42px;height:42px;border-radius:12px;flex:none;
+  background:var(--bk-navy);display:grid;place-items:center;
+}
+.bk-logo-mark svg{width:24px;height:24px}
+.bk-logo-txt strong{display:block;font-size:15.5px;color:var(--bk-navy);letter-spacing:.02em}
+.bk-logo-txt span{display:block;font-size:11px;color:var(--bk-muted);letter-spacing:.14em}
+.bk-nav{display:flex;gap:4px;margin-left:8px}
+.bk-nav a{
+  padding:7px 12px;border-radius:9px;font-size:14.5px;color:#2d3b4d;font-weight:600;
+  transition:background .2s,color .2s;
+}
+.bk-nav a:hover{background:#eef2f8;color:var(--bk-red-deep)}
+.bk-tools{display:flex;align-items:center;gap:10px;margin-left:auto}
+.bk-search{
+  display:flex;align-items:center;gap:6px;background:#eef2f8;border:1px solid transparent;
+  border-radius:999px;padding:6px 8px 6px 14px;transition:border-color .2s,background .2s;
+}
+.bk-search:focus-within{border-color:var(--bk-red);background:#fff}
+.bk-search input{
+  border:none;background:transparent;outline:none;font-size:13.5px;width:170px;color:var(--bk-ink);
+}
+.bk-search button{
+  background:var(--bk-navy);color:#fff;border-radius:999px;font-size:12.5px;
+  padding:5px 12px;font-weight:700;
+}
+.bk-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  border-radius:999px;font-weight:700;font-size:14px;padding:10px 20px;
+  transition:transform .18s,box-shadow .18s,background .18s;
+}
+.bk-btn:active{transform:translateY(1px)}
+.bk-btn-primary{background:var(--bk-red);color:#fff;box-shadow:0 8px 20px rgba(230,57,70,.28)}
+.bk-btn-primary:hover{background:var(--bk-red-deep)}
+.bk-btn-ghost{background:#fff;color:var(--bk-navy);border:1.5px solid var(--bk-navy)}
+.bk-btn-ghost:hover{background:var(--bk-navy);color:#fff}
+.bk-btn-soft{background:#fff;color:var(--bk-red-deep);border:1.5px solid rgba(230,57,70,.35)}
+.bk-btn-soft:hover{background:#fdeced}
+.bk-burger{display:none;width:42px;height:42px;border-radius:11px;background:#eef2f8;place-items:center}
+.bk-burger span{display:block;width:18px;height:2px;background:var(--bk-navy);margin:3px auto;border-radius:2px;transition:.25s}
+.bk-mobile-nav{display:none;border-top:1px solid var(--bk-line);background:#fff}
+.bk-mobile-nav.open{display:block}
+.bk-mobile-nav a{display:block;padding:12px 4px;border-bottom:1px dashed var(--bk-line);font-weight:600;color:#2d3b4d}
+.bk-search-feedback{
+  font-size:12.5px;color:var(--bk-red-deep);font-weight:700;margin-top:8px;min-height:18px;
+}
+
+/* ===== 首屏：全幅主视觉背景与浮动文字 ===== */
+.bk-hero{
+  position:relative;overflow:hidden;color:#fff;
+  background:radial-gradient(1200px 500px at 80% -10%,#2b3d55 0%,transparent 60%),var(--bk-navy);
+}
+.bk-hero-bg{position:absolute;inset:0;opacity:.55}
+.bk-hero-bg svg{width:100%;height:100%;object-fit:cover}
+.bk-hero-veil{
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(15,23,36,.94) 0%,rgba(15,23,36,.78) 46%,rgba(15,23,36,.35) 100%);
+}
+.bk-hero-inner{position:relative;padding:72px 0 64px}
+.bk-hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:44px;align-items:center}
+.bk-hero-badge{
+  display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;
+  background:rgba(255,209,102,.14);color:var(--bk-gold);border:1px solid rgba(255,209,102,.35);
+  padding:5px 13px;border-radius:999px;letter-spacing:.06em;
+}
+.bk-hero h1{
+  font-size:clamp(30px,4.6vw,50px);margin:18px 0 14px;letter-spacing:-.01em;
+}
+.bk-hero h1 em{font-style:normal;color:var(--bk-gold)}
+.bk-hero-lead{color:#c8d4e4;font-size:16.5px;max-width:600px}
+.bk-hero-desc{
+  margin-top:20px;color:#a9b8cc;font-size:14.8px;line-height:1.95;
+  border-left:3px solid var(--bk-red);padding-left:16px;max-width:620px;
+}
+.bk-hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.bk-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:34px;max-width:560px}
+.bk-stat{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  border-radius:13px;padding:14px 16px;
+}
+.bk-stat b{display:block;font-size:23px;color:var(--bk-gold);letter-spacing:-.02em}
+.bk-stat span{font-size:12.5px;color:#a9b8cc}
+.bk-hero-card{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);
+  border-radius:20px;padding:16px;backdrop-filter:blur(6px);
+}
+.bk-hero-card-img{border-radius:13px;overflow:hidden;aspect-ratio:16/10;background:#1c2a3c}
+.bk-hero-card-img svg{width:100%;height:100%}
+.bk-hero-card-meta{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:12px;color:var(--bk-gold);font-weight:700}
+.bk-live-dot{width:8px;height:8px;border-radius:50%;background:var(--bk-red);box-shadow:0 0 0 0 rgba(230,57,70,.7);animation:bkPulse 1.8s infinite}
+@keyframes bkPulse{70%{box-shadow:0 0 0 9px rgba(230,57,70,0)}100%{box-shadow:0 0 0 0 rgba(230,57,70,0)}}
+.bk-hero-card h3{color:#fff;font-size:17px;margin:8px 0 8px}
+.bk-hero-card p{color:#a9b8cc;font-size:13.4px}
+.bk-hero-card-foot{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+
+.bk-marquee{
+  background:#0a111b;border-top:1px solid rgba(255,255,255,.08);
+  color:#8fa2ba;font-size:13px;
+}
+.bk-marquee .bk-wrap{display:flex;align-items:center;gap:10px;padding:11px 0;overflow:hidden}
+.bk-marquee-tag{flex:none;color:var(--bk-gold);font-weight:800;font-size:12px}
+.bk-marquee-line{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ===== 通用卡片 ===== */
+.bk-grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.bk-grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.bk-grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.bk-card{
+  background:#fff;border:1px solid var(--bk-line);border-radius:var(--bk-radius);
+  overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s;
+}
+.bk-card:hover{transform:translateY(-4px);box-shadow:var(--bk-shadow);border-color:#cfd9e8}
+.bk-thumb{aspect-ratio:16/9;background:#e7edf6;overflow:hidden;position:relative}
+.bk-thumb svg{width:100%;height:100%}
+.bk-thumb-tag{
+  position:absolute;left:10px;top:10px;background:rgba(15,23,36,.82);color:#fff;
+  font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;letter-spacing:.04em;
+}
+.bk-thumb-play{
+  position:absolute;right:10px;bottom:10px;width:34px;height:34px;border-radius:50%;
+  background:rgba(230,57,70,.92);display:grid;place-items:center;
+}
+.bk-thumb-play svg{width:13px;height:13px}
+.bk-card-body{padding:16px 17px 18px}
+.bk-card-body h3{font-size:16.5px;color:var(--bk-navy);margin-bottom:8px}
+.bk-card-body p{font-size:13.8px;color:var(--bk-muted);line-height:1.8}
+.bk-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.bk-tag{
+  font-size:11.5px;font-weight:700;color:#3d4d61;background:#eef2f8;
+  border-radius:999px;padding:3px 9px;
+}
+.bk-card-foot{
+  display:flex;align-items:center;gap:12px;margin-top:14px;padding-top:12px;
+  border-top:1px dashed var(--bk-line);font-size:12.5px;color:var(--bk-muted);flex-wrap:wrap;
+}
+.bk-card-foot .bk-author{font-weight:700;color:var(--bk-red-deep)}
+.bk-actions{display:flex;gap:8px;margin-left:auto}
+.bk-act{
+  display:inline-flex;align-items:center;gap:4px;font-size:12.5px;color:#54647a;
+  background:#f1f5fa;border-radius:999px;padding:4px 10px;font-weight:700;transition:.2s;
+}
+.bk-act:hover{background:#e4ebf5}
+.bk-act.on{background:#fdeced;color:var(--bk-red-deep)}
+.bk-act svg{width:13px;height:13px}
+
+/* 重点大图 + 文字列表 */
+.bk-feature{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:26px;align-items:start}
+.bk-feature-main{position:relative;border-radius:20px;overflow:hidden;color:#fff;background:var(--bk-navy)}
+.bk-feature-main .bk-thumb{aspect-ratio:16/9}
+.bk-feature-overlay{
+  padding:20px 22px 22px;background:linear-gradient(180deg,rgba(15,23,36,0) 0%,rgba(15,23,36,.92) 42%,#0f1724 100%);
+  margin-top:-92px;position:relative;
+}
+.bk-feature-overlay h3{font-size:22px;color:#fff;margin-bottom:8px}
+.bk-feature-overlay p{font-size:13.8px;color:#a9b8cc}
+.bk-brief-list{display:grid;gap:12px}
+.bk-brief{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;
+  background:#fff;border:1px solid var(--bk-line);border-radius:13px;padding:14px 16px;
+  transition:.2s;
+}
+.bk-brief:hover{border-color:#cfd9e8;box-shadow:0 8px 20px rgba(15,23,36,.07)}
+.bk-brief h3{font-size:14.8px;color:var(--bk-navy);margin-bottom:5px}
+.bk-brief p{font-size:12.8px;color:var(--bk-muted);line-height:1.7}
+.bk-brief-num{
+  width:30px;height:30px;border-radius:9px;display:grid;place-items:center;
+  background:#eef2f8;color:var(--bk-navy);font-weight:800;font-size:13px;
+}
+.bk-brief-num.hot{background:var(--bk-red);color:#fff}
+
+/* 视频正文列表 */
+.bk-vlist{display:grid;gap:14px}
+.bk-vitem{
+  display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:center;
+  background:#fff;border:1px solid var(--bk-line);border-radius:14px;padding:16px 18px;transition:.2s;
+}
+.bk-vitem:hover{border-color:#cfd9e8;box-shadow:0 10px 24px rgba(15,23,36,.07)}
+.bk-vitem-rank{
+  width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+  font-weight:800;font-size:16px;background:#eef2f8;color:var(--bk-navy);flex:none;
+}
+.bk-vitem:nth-child(1) .bk-vitem-rank{background:var(--bk-red);color:#fff}
+.bk-vitem:nth-child(2) .bk-vitem-rank{background:var(--bk-gold);color:#4b3a00}
+.bk-vitem:nth-child(3) .bk-vitem-rank{background:#c9d6e6;color:#22303f}
+.bk-vitem h3{font-size:15.8px;color:var(--bk-navy);margin-bottom:5px}
+.bk-vitem p{font-size:13.2px;color:var(--bk-muted)}
+.bk-vitem-side{display:flex;flex-direction:column;align-items:flex-end;gap:8px;font-size:12px;color:var(--bk-muted);white-space:nowrap}
+
+/* 专题 */
+.bk-topic{
+  background:var(--bk-navy);color:#fff;border-radius:20px;padding:28px;position:relative;overflow:hidden;
+}
+.bk-topic::after{
+  content:"";position:absolute;right:-60px;top:-60px;width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(230,57,70,.35),transparent 70%);
+}
+.bk-topic h3{font-size:20px;margin-bottom:8px}
+.bk-topic p{color:#a9b8cc;font-size:13.8px}
+.bk-topic-status{
+  display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:12px;font-weight:700;
+  color:var(--bk-gold);background:rgba(255,209,102,.12);border:1px solid rgba(255,209,102,.3);
+  padding:4px 11px;border-radius:999px;
+}
+.bk-topic-list{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:10px;position:relative;z-index:1}
+.bk-topic-list li{
+  display:flex;gap:10px;font-size:13.6px;color:#d5deea;padding-bottom:10px;
+  border-bottom:1px dashed rgba(255,255,255,.14);
+}
+.bk-topic-list li:last-child{border-bottom:none;padding-bottom:0}
+.bk-topic-list em{font-style:normal;color:var(--bk-gold);font-weight:800;flex:none;font-size:12px}
+
+/* 作者 */
+.bk-author-card{
+  background:#fff;border:1px solid var(--bk-line);border-radius:16px;padding:20px;transition:.2s;
+}
+.bk-author-card:hover{box-shadow:var(--bk-shadow);transform:translateY(-3px)}
+.bk-avatar{
+  width:56px;height:56px;border-radius:16px;display:grid;place-items:center;
+  font-weight:800;font-size:20px;color:#fff;flex:none;
+}
+.bk-author-top{display:flex;gap:13px;align-items:center}
+.bk-author-top h3{font-size:16px;color:var(--bk-navy)}
+.bk-author-top span{font-size:12px;color:var(--bk-muted)}
+.bk-author-card p{font-size:13.4px;color:var(--bk-muted);margin-top:12px;line-height:1.85}
+.bk-author-nums{display:flex;gap:16px;margin-top:12px;font-size:12.4px;color:#43536a;font-weight:700}
+.bk-author-nums b{color:var(--bk-red-deep)}
+.bk-author-link{display:inline-block;margin-top:12px;font-size:12.8px;font-weight:700;color:var(--bk-red-deep);border-bottom:1px solid rgba(230,57,70,.35);background:none;padding:0}
+
+/* 评论 */
+.bk-cmt{background:#fff;border:1px solid var(--bk-line);border-radius:14px;padding:18px 20px}
+.bk-cmt p{font-size:14px;color:#33435a}
+.bk-cmt-from{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:12.4px;color:var(--bk-muted)}
+.bk-cmt-dot{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800;color:#fff}
+.bk-quote{background:linear-gradient(135deg,#fdf1f2,#fff);border-left:4px solid var(--bk-red)}
+.bk-quote p{font-size:15px;font-style:italic;color:#3a2b2d}
+
+/* 数据榜 */
+.bk-rank{padding:0;list-style:none;margin:0;display:grid;gap:0}
+.bk-rank li{
+  display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;
+  padding:13px 4px;border-bottom:1px dashed var(--bk-line);font-size:14px;
+}
+.bk-rank li:last-child{border-bottom:none}
+.bk-rank b{font-weight:800;color:var(--bk-red-deep)}
+.bk-rank-name{color:var(--bk-navy);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bk-rank-bar{width:90px;height:7px;border-radius:99px;background:#eef2f8;overflow:hidden}
+.bk-rank-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--bk-red),var(--bk-gold));border-radius:99px}
+
+/* 解析长文 */
+.bk-article{
+  background:#fff;border:1px solid var(--bk-line);border-radius:20px;padding:clamp(22px,3vw,40px);
+}
+.bk-article h3{font-size:19px;color:var(--bk-navy);margin:26px 0 10px}
+.bk-article h3:first-child{margin-top:0}
+.bk-article p{font-size:15px;color:#3c4a5e;margin-bottom:12px;text-align:justify}
+.bk-article strong{color:var(--bk-red-deep)}
+.bk-note{
+  background:#f5f8fc;border-radius:12px;border-left:4px solid var(--bk-gold);
+  padding:14px 18px;font-size:14px;color:#47566b;margin-top:18px;
+}
+
+/* FAQ */
+.bk-faq{display:grid;gap:12px}
+.bk-faq details{
+  background:#fff;border:1px solid var(--bk-line);border-radius:13px;padding:0;overflow:hidden;
+}
+.bk-faq details[open]{border-color:#c6d3e4;box-shadow:0 8px 22px rgba(15,23,36,.06)}
+.bk-faq summary{
+  list-style:none;cursor:pointer;padding:16px 20px;font-weight:700;font-size:15px;color:var(--bk-navy);
+  display:flex;align-items:center;gap:10px;
+}
+.bk-faq summary::-webkit-details-marker{display:none}
+.bk-faq summary::before{
+  content:"+";width:22px;height:22px;border-radius:7px;background:#eef2f8;color:var(--bk-navy);
+  display:grid;place-items:center;font-weight:800;flex:none;transition:.2s;
+}
+.bk-faq details[open] summary::before{content:"−";background:var(--bk-red);color:#fff}
+.bk-faq .bk-faq-body{padding:0 20px 18px 52px;font-size:14px;color:#4b5a6f}
+
+/* 动态 */
+.bk-news{display:grid;gap:12px}
+.bk-news-item{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;background:#fff;border:1px solid var(--bk-line);border-radius:13px;padding:16px 18px}
+.bk-news-date{font-size:12px;font-weight:800;color:var(--bk-red-deep);background:#fdeced;border-radius:9px;padding:6px 10px;height:fit-content;white-space:nowrap}
+.bk-news-item h3{font-size:15px;color:var(--bk-navy);margin-bottom:5px}
+.bk-news-item p{font-size:13.4px;color:var(--bk-muted)}
+
+/* 合作 & CTA */
+.bk-partners{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.bk-partner{
+  background:#fff;border:1px solid var(--bk-line);border-radius:13px;padding:18px 14px;text-align:center;
+  font-weight:800;color:#40506a;font-size:14px;letter-spacing:.02em;
+}
+.bk-partner span{display:block;font-size:11.5px;font-weight:600;color:#8b99ab;margin-top:4px;letter-spacing:0}
+.bk-cta{
+  background:linear-gradient(120deg,var(--bk-navy) 0%,#25384f 100%);color:#fff;border-radius:22px;
+  padding:clamp(26px,4vw,46px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:26px;align-items:center;
+}
+.bk-cta h2{font-size:clamp(22px,2.8vw,30px);margin-bottom:10px}
+.bk-cta p{color:#a9b8cc;font-size:14.4px;max-width:600px}
+.bk-cta-actions{display:flex;gap:12px;flex-wrap:wrap}
+
+/* 页脚 */
+.bk-footer{background:#0b131f;color:#93a3b8;padding:56px 0 26px;font-size:13.6px}
+.bk-footer-grid{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,.7fr));gap:30px}
+.bk-footer h3{color:#fff;font-size:15px;margin-bottom:14px}
+.bk-footer p{line-height:1.9;color:#8496ac}
+.bk-footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.bk-footer a:hover{color:var(--bk-gold)}
+.bk-footer-bottom{
+  margin-top:36px;padding-top:20px;border-top:1px solid rgba(255,255,255,.09);
+  display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:space-between;font-size:12.6px;color:#6f8197;
+}
+.bk-footer-logo{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.bk-footer-logo .bk-logo-mark{background:#1b2a3d}
+.bk-footer-logo strong{color:#fff;font-size:15.5px}
+
+/* 弹窗 & Toast */
+.bk-modal-mask{
+  position:fixed;inset:0;background:rgba(9,15,24,.6);z-index:120;display:none;
+  padding:24px;overflow:auto;
+}
+.bk-modal-mask.open{display:grid;place-items:center}
+.bk-modal{
+  background:#fff;border-radius:18px;width:min(560px,100%);padding:26px;position:relative;
+  box-shadow:0 30px 60px rgba(0,0,0,.3);animation:bkUp .22s ease;
+}
+@keyframes bkUp{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
+.bk-modal h3{font-size:19px;color:var(--bk-navy);margin-bottom:8px}
+.bk-modal p{font-size:14px;color:var(--bk-muted)}
+.bk-modal-close{
+  position:absolute;right:14px;top:12px;width:32px;height:32px;border-radius:9px;
+  background:#eef2f8;color:var(--bk-navy);font-size:17px;font-weight:800;display:grid;place-items:center;
+}
+.bk-modal-body{margin-top:16px;font-size:14px;color:#3c4a5e;line-height:1.9}
+.bk-modal-field{display:grid;gap:8px;margin-top:14px}
+.bk-modal-field label{font-size:12.6px;font-weight:700;color:var(--bk-navy)}
+.bk-modal-field input,.bk-modal-field textarea{
+  width:100%;border:1px solid var(--bk-line);border-radius:10px;padding:10px 12px;
+  font-family:inherit;font-size:14px;outline:none;background:#fafcff;color:var(--bk-ink);
+}
+.bk-modal-field input:focus,.bk-modal-field textarea:focus{border-color:var(--bk-red)}
+.bk-toast{
+  position:fixed;left:50%;bottom:34px;transform:translate(-50%,20px);z-index:200;
+  background:var(--bk-navy);color:#fff;font-size:13.6px;font-weight:700;padding:11px 22px;
+  border-radius:999px;opacity:0;pointer-events:none;transition:.28s;box-shadow:0 14px 30px rgba(15,23,36,.3);
+}
+.bk-toast.show{opacity:1;transform:translate(-50%,0)}
+.bk-top{
+  position:fixed;right:22px;bottom:26px;width:46px;height:46px;border-radius:14px;z-index:90;
+  background:var(--bk-navy);color:#fff;display:grid;place-items:center;box-shadow:0 12px 26px rgba(15,23,36,.28);
+  opacity:0;pointer-events:none;transition:.25s;
+}
+.bk-top.show{opacity:1;pointer-events:auto}
+.bk-top svg{width:18px;height:18px}
+
+/* 锚点偏移 */
+section[id],div[id].bk-anchor{scroll-margin-top:calc(var(--bk-head) + 12px)}
+
+@media (max-width:1024px){
+  .bk-hero-grid{grid-template-columns:minmax(0,1fr)}
+  .bk-hero-card{max-width:560px}
+  .bk-feature{grid-template-columns:minmax(0,1fr)}
+  .bk-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bk-footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bk-partners{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:860px){
+  .bk-nav,.bk-tools .bk-search,.bk-tools .bk-btn-ghost{display:none}
+  .bk-burger{display:grid}
+  .bk-tools{margin-left:auto}
+  .bk-grid-3,.bk-grid-2{grid-template-columns:minmax(0,1fr)}
+  .bk-hero-inner{padding:48px 0 44px}
+  .bk-stats{grid-template-columns:minmax(0,1fr)}
+  .bk-cta{grid-template-columns:minmax(0,1fr)}
+  .bk-anno-inner{flex-wrap:wrap;gap:6px 10px}
+  .bk-anno-text{white-space:normal;font-size:12.6px;line-height:1.5}
+  .bk-anno-more{margin-left:0}
+  .bk-vitem{grid-template-columns:auto minmax(0,1fr)}
+  .bk-vitem-side{grid-column:1 / -1;flex-direction:row;align-items:center;justify-content:flex-start}
+  :root{--bk-head:132px}
+}
+@media (max-width:560px){
+  .bk-grid-4,.bk-footer-grid,.bk-partners{grid-template-columns:minmax(0,1fr)}
+  .bk-feature-overlay h3{font-size:18px}
+  .bk-section{padding:46px 0}
+  .bk-rank li{grid-template-columns:auto minmax(0,1fr)}
+  .bk-rank-bar{display:none}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- ===== S1 公告条 + 页头（一同吸顶） ===== -->
+<div class="bk-sticky">
+  <div class="bk-anno">
+    <div class="bk-wrap bk-anno-inner">
+      <span class="bk-anno-tag">公告</span>
+      <span class="bk-anno-text">
+        <b>11月22日</b> 赛事爆料站新增「现场回传」通道；<b>12月1日</b> 冬季冠军赛爆料专区开启报名；本周《冠军赛前夜：更衣室里的第十二小时》已上线。
+      </span>
+      <a class="bk-anno-more" href="#bk-news">查看全部更新 →</a>
+    </div>
+  </div>
+
+  <header class="bk-header">
+    <div class="bk-wrap bk-header-inner">
+      <a class="bk-logo" href="#bk-top" aria-label="大赛每日在线爆料平台首页">
+        <span class="bk-logo-mark">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="7" y="9" width="18" height="13" rx="2.5" fill="none" stroke="#ff4d3d" stroke-width="2.2"/><path d="M14 13.5l6.5 2-6.5 2z" fill="#ffd166"/></svg>
+        </span>
+        <span class="bk-logo-txt">
+          <strong>大赛每日在线爆料平台</strong>
+          <span>官方视频门户 · 每日爆料</span>
+        </span>
+      </a>
+
+      <nav class="bk-nav" aria-label="主导航">
+        <a href="#bk-focus">爆点焦点</a>
+        <a href="#bk-stream">每日爆料</a>
+        <a href="#bk-topic">专题企划</a>
+        <a href="#bk-authors">爆料人</a>
+        <a href="#bk-rank">热度榜</a>
+        <a href="#bk-guide">深度解析</a>
+        <a href="#bk-faq">帮助</a>
+      </nav>
+
+      <div class="bk-tools">
+        <div class="bk-search">
+          <input id="bkSearchInput" type="search" placeholder="搜索赛项 / 战队 / 爆料人" aria-label="站内搜索">
+          <button type="button" id="bkSearchBtn">搜索</button>
+        </div>
+        <button class="bk-btn bk-btn-ghost" type="button" data-bk-modal="submit">我要爆料</button>
+        <button class="bk-btn bk-btn-primary" type="button" data-bk-modal="join">加入社区</button>
+        <button class="bk-burger" id="bkBurger" aria-label="展开导航" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="bk-mobile-nav" id="bkMobileNav">
+      <div class="bk-wrap">
+        <a href="#bk-focus">爆点焦点</a>
+        <a href="#bk-stream">每日爆料</a>
+        <a href="#bk-topic">专题企划</a>
+        <a href="#bk-authors">爆料人矩阵</a>
+        <a href="#bk-rank">热度榜</a>
+        <a href="#bk-guide">关键词深度解析</a>
+        <a href="#bk-faq">帮助与 FAQ</a>
+        <a href="#bk-news">企业动态</a>
+        <div class="bk-search-feedback" id="bkSearchFeedbackMobile"></div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<main id="bk-top">
+
+  <!-- ===== S2 品牌首屏：全幅主视觉背景与浮动文字 ===== -->
+  <section class="bk-hero" aria-label="品牌首屏">
+    <div class="bk-hero-bg" aria-hidden="true">
+      <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="bkHeroSky" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#1b2a3d"/><stop offset="1" stop-color="#0d1622"/>
+          </linearGradient>
+          <linearGradient id="bkHeroBeam" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffd166" stop-opacity=".55"/><stop offset="1" stop-color="#ffd166" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <rect width="1600" height="900" fill="url(#bkHeroSky)"/>
+        <g opacity=".5">
+          <circle cx="1290" cy="210" r="130" fill="#ffd166" opacity=".12"/>
+          <circle cx="1290" cy="210" r="86" fill="#ffd166" opacity=".18"/>
+          <circle cx="1290" cy="210" r="46" fill="#ffd166" opacity=".3"/>
+        </g>
+        <g opacity=".35" stroke="#4d6a8c" stroke-width="1.2" fill="none">
+          <path d="M0 700 L340 560 L680 660 L1020 520 L1360 620 L1600 540"/>
+          <path d="M0 780 L340 640 L680 740 L1020 600 L1360 700 L1600 620"/>
+          <path d="M0 860 L340 720 L680 820 L1020 680 L1360 780 L1600 700"/>
+        </g>
+        <g opacity=".2">
+          <path d="M980 0 L1200 0 L760 900 L540 900 Z" fill="url(#bkHeroBeam)"/>
+          <path d="M1180 0 L1300 0 L960 900 L860 900 Z" fill="url(#bkHeroBeam)"/>
+        </g>
+        <g opacity=".55">
+          <rect x="1120" y="470" width="330" height="196" rx="18" fill="#22364d" stroke="#3c5a7c"/>
+          <rect x="1150" y="498" width="190" height="12" rx="6" fill="#4a6a8d"/>
+          <rect x="1150" y="524" width="260" height="12" rx="6" fill="#3c5674"/>
+          <rect x="1150" y="550" width="220" height="12" rx="6" fill="#3c5674"/>
+          <circle cx="1396" cy="616" r="22" fill="#e63946"/>
+          <path d="M1388 606l16 10-16 10z" fill="#fff"/>
+        </g>
+        <g opacity=".4" fill="#5d7fa4">
+          <circle cx="180" cy="300" r="4"/><circle cx="260" cy="240" r="3"/><circle cx="420" cy="360" r="5"/>
+          <circle cx="560" cy="210" r="3"/><circle cx="700" cy="330" r="4"/><circle cx="880" cy="250" r="3"/>
+        </g>
+      </svg>
+    </div>
+    <div class="bk-hero-veil"></div>
+
+    <div class="bk-wrap bk-hero-inner">
+      <div class="bk-hero-grid">
+        <div>
+          <span class="bk-hero-badge">官方网站 · 品牌企业 · 每日在线爆料</span>
+          <h1>大赛每日在线爆料平台</h1>
+          <p class="bk-hero-lead">把每一场比赛的临场瞬间、赛后声音与幕后故事，做成每天可追的原创高清视频爆料。</p>
+          <p class="bk-hero-desc">
+            大赛每日在线爆料平台是一家深耕赛事内容领域的视频品牌企业，运营方以官方网站与官方客户端为核心阵地，为赛事主办方、参赛队伍、媒体与普通爱好者搭建值得信赖的爆料内容生态。我们坚持原创正版与专业审核，覆盖赛前情报、现场回传、争议复盘与人物访谈，用高清影像与真实讲述，记录每一场比赛之外的现场温度。
+          </p>
+          <div class="bk-hero-actions">
+            <a class="bk-btn bk-btn-primary" href="#bk-stream">今日爆料入口</a>
+            <a class="bk-btn bk-btn-soft" href="#bk-topic" style="color:#fff;border-color:rgba(255,255,255,.45);background:rgba(255,255,255,.06)">查看专题企划</a>
+            <button class="bk-btn bk-btn-ghost" type="button" data-bk-modal="submit" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.5)">提交爆料线索</button>
+          </div>
+          <div class="bk-stats">
+            <div class="bk-stat"><b data-bk-count="1864">0</b><span>累计爆料视频条目</span></div>
+            <div class="bk-stat"><b data-bk-count="327">0</b><span>认证爆料创作者</span></div>
+            <div class="bk-stat"><b data-bk-count="96">0</b><span>覆盖赛事与赛区</span></div>
+          </div>
+        </div>
+
+        <aside class="bk-hero-card" aria-label="今日主推爆料">
+          <div class="bk-hero-card-img">
+            <svg viewBox="0 0 640 400" role="img" aria-label="冠军赛前夜更衣室走廊的现场摄影构图">
+              <rect width="640" height="400" fill="#101c2b"/>
+              <rect x="40" y="60" width="240" height="280" rx="10" fill="#1c3049"/>
+              <rect x="60" y="84" width="200" height="120" rx="6" fill="#2c4a6b"/>
+              <rect x="60" y="220" width="90" height="100" rx="6" fill="#26405c"/>
+              <rect x="166" y="220" width="94" height="100" rx="6" fill="#223a54"/>
+              <g>
+                <rect x="330" y="120" width="250" height="150" rx="12" fill="#1a2b3f" stroke="#3b5675"/>
+                <circle cx="455" cy="195" r="34" fill="#e63946"/>
+                <path d="M445 178l26 17-26 17z" fill="#ffd166"/>
+                <rect x="352" y="290" width="120" height="10" rx="5" fill="#3b5675"/>
+                <rect x="352" y="310" width="180" height="10" rx="5" fill="#2c4258"/>
+              </g>
+              <rect x="40" y="360" width="560" height="4" rx="2" fill="#2b4460"/>
+              <g fill="#ffd166" opacity=".75">
+                <circle cx="600" cy="70" r="5"/><circle cx="580" cy="96" r="3"/><circle cx="612" cy="108" r="3"/>
+              </g>
+            </svg>
+          </div>
+          <div class="bk-hero-card-meta"><span class="bk-live-dot" aria-hidden="true"></span>今日 14:20 更新 · 现场回传</div>
+          <h3>冠军赛前夜：更衣室里的第十二小时</h3>
+          <p>从场馆通道到替补席，我们跟着三支决赛队伍拍下了赛前最安静的十二小时，也拍到了教练最后一次战术板讲解。</p>
+          <div class="bk-hero-card-foot">
+            <button class="bk-act" type="button" data-bk-like><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.4-7-9.5A4.5 4.5 0 0 1 12 8a4.5 4.5 0 0 1 7 3.5C19 16.6 12 21 12 21z"/></svg><span>2.7万</span></button>
+            <button class="bk-act" type="button" data-bk-fav><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4l2.6 5.6 6 .6-4.5 4 1.3 5.8L12 17.8 6.6 20l1.3-5.8L3.4 10.2l6-.6z"/></svg><span>收藏</span></button>
+            <button class="bk-act" type="button" data-bk-share><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12l8-5M8 12l8 5"/><circle cx="18" cy="6" r="2.4"/><circle cx="6" cy="12" r="2.4"/><circle cx="18" cy="18" r="2.4"/></svg><span>分享</span></button>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <div class="bk-marquee">
+      <div class="bk-wrap">
+        <span class="bk-marquee-tag">滚动更新</span>
+        <span class="bk-marquee-line">09:40 区域联赛抽签结果公布 · 11:05 主裁判赛前发布会回应判罚尺度 · 13:12 新人战队首次公开训练 · 15:30 爆料人「赛道边的小满」上传后方补给站实录 · 18:00 冬季冠军赛专区报名开启</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S3 爆点焦点（重点大图 + 文字列表） ===== -->
+  <section class="bk-section" id="bk-focus">
+    <div class="bk-wrap">
+      <div class="bk-section-head">
+        <span class="bk-eyebrow">Focus 爆点焦点</span>
+        <h2 class="bk-h2">今天最值得追的三条<span class="bk-keyword">大赛爆料</span>焦点</h2>
+        <p class="bk-sub">编辑组每天从数百条线索中筛出可交叉验证的现场内容，重点条目配高清封面，其余以文字摘要形式持续更新。</p>
+      </div>
+
+      <div class="bk-feature">
+        <article class="bk-feature-main">
+          <div class="bk-thumb">
+            <span class="bk-thumb-tag">焦点 · 现场回传</span>
+            <svg viewBox="0 0 800 450" role="img" aria-label="决赛场馆观众席与主舞台灯光的爆料现场画面">
+              <rect width="800" height="450" fill="#0e1a28"/>
+              <ellipse cx="400" cy="430" rx="420" ry="120" fill="#132438"/>
+              <rect x="250" y="120" width="300" height="170" rx="10" fill="#1b3048" stroke="#38547a"/>
+              <path d="M290 175h110v10h-110z" fill="#3d5f86"/>
+              <path d="M290 200h180v10h-180z" fill="#32506f"/>
+              <path d="M290 225h150v10h-150z" fill="#32506f"/>
+              <g fill="#e63946">
+                <circle cx="330" cy="265" r="9"/><circle cx="366" cy="265" r="9"/><circle cx="402" cy="265" r="9"/>
+              </g>
+              <g fill="#2a4560">
+                <rect x="80" y="300" width="120" height="70" rx="6"/><rect x="220" y="300" width="120" height="70" rx="6"/>
+                <rect x="460" y="300" width="120" height="70" rx="6"/><rect x="600" y="300" width="120" height="70" rx="6"/>
+              </g>
+              <g fill="#ffd166" opacity=".8">
+                <circle cx="150" cy="335" r="6"/><circle cx="290" cy="335" r="6"/><circle cx="530" cy="335" r="6"/><circle cx="670" cy="335" r="6"/>
+              </g>
+              <path d="M380 60l40 40-40 40-40-40z" fill="#ffd166" opacity=".55"/>
+            </svg>
+            <span class="bk-thumb-play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5l12 7-12 7z"/></svg></span>
+          </div>
+          <div class="bk-feature-overlay">
+            <h3>决赛第七分钟的那次改判，我们在三个机位里找到了完整过程</h3>
+            <p>爆料人「看台第三排」用手机、便携机与场馆回放三段素材拼出了改判前后的 46 秒，编辑组已就关键帧与两位裁判观察员交叉核对。</p>
+            <div class="bk-tags">
+              <span class="bk-tag">现场回传</span><span class="bk-tag">赛事争议</span><span class="bk-tag">多机位</span><span class="bk-tag">深度复盘</span>
+            </div>
+            <div class="bk-card-foot" style="border-top-color:rgba(255,255,255,.16);color:#a9b8cc">
+              <span class="bk-author" style="color:var(--bk-gold)">看台第三排</span>
+              <span>播放 18.2万 · 点赞 3.4万 · 收藏 9,120</span>
+              <div class="bk-actions">
+                <button class="bk-act" type="button" data-bk-like style="background:rgba(255,255,255,.1);color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.4-7-9.5A4.5 4.5 0 0 1 12 8a4.5 4.5 0 0 1 7 3.5C19 16.6 12 21 12 21z"/></svg><span>点赞</span></button>
+                <button class="bk-act" type="button" data-bk-fav style="background:rgba(255,255,255,.1);color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4l2.6 5.6 6 .6-4.5 4 1.3 5.8L12 17.8 6.6 20l1.3-5.8L3.4 10.2l6-.6z"/></svg><span>收藏</span></button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div class="bk-brief-list">
+          <article class="bk-brief">
+            <div>
+              <h3>新人队伍“北辰”训练日记：每天 4 小时体能之后的 40 分钟录像课</h3>
+              <p>从赛区垫底到打进八强，教练把每晚的复盘会全程开放给爆料人跟拍，这也是我们第一次完整记录一支新队的成长节奏。</p>
+              <div class="bk-tags"><span class="bk-tag">训练记录</span><span class="bk-tag">新人故事</span></div>
+            </div>
+            <span class="bk-brief-num hot">01</span>
+          </article>
+          <article class="bk-brief">
+            <div>
+              <h3>裁判组公开课：三类常见误判你也能在慢镜头里看出来</h3>
+              <p>我们把本赛季被讨论最多的 12 次判罚剪辑成 3 组对照素材，请国家级裁判逐帧讲解判定依据与边界条件。</p>
+              <div class="bk-tags"><span class="bk-tag">知识科普</span><span class="bk-tag">规则解读</span></div>
+            </div>
+            <span class="bk-brief-num">02</span>
+          </article>
+          <article class="bk-brief">
+            <div>
+              <h3>看台上的五小时：一位连续 27 场现场观赛者的随身记录</h3>
+              <p>补给站的排队时长、返场人流、临时广播——这些细节往往比比分更能说明一场比赛的现场管理水平。</p>
+              <div class="bk-tags"><span class="bk-tag">城市现场</span><span class="bk-tag">观赛生活</span></div>
+            </div>
+            <span class="bk-brief-num">03</span>
+          </article>
+          <article class="bk-brief">
+            <div>
+              <h3>爆料线索怎么来的：编辑组一天筛 400 条的流程拆解</h3>
+              <p>从投稿入口到交叉验证、再到成片发布，我们把审核流程公开为一张可追踪的节点图，接受社区监督。</p>
+              <div class="bk-tags"><span class="bk-tag">创作幕后</span><span class="bk-tag">内容生态</span></div>
+            </div>
+            <span class="bk-brief-num">04</span>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S3b 每日爆料视频流（两列图文卡片） ===== -->
+  <section class="bk-section" id="bk-stream" style="background:#eef2f8">
+    <div class="bk-wrap">
+      <div class="bk-section-head">
+        <span class="bk-eyebrow">Daily Stream 每日爆料</span>
+        <h2 class="bk-h2">每日爆料视频流：<span class="bk-keyword">大赛每日在线爆料平台</span>今日六条</h2>
+        <p class="bk-sub">重点条目配封面，其余以文字摘要呈现；每条内容均标注爆料人、播放数据与互动入口，方便你按兴趣追更。</p>
+      </div>
+
+      <div class="bk-grid-2">
+        <article class="bk-card">
+          <div class="bk-thumb">
+            <span class="bk-thumb-tag">经验分享</span>
+            <svg viewBox="0 0 640 360" role="img" aria-label="爆料人手持稳定器在场馆通道拍摄的示意画面">
+              <rect width="640" height="360" fill="#12202f"/>
+              <path d="M0 300h640v60H0z" fill="#1b2d42"/>
+              <rect x="70" y="70" width="150" height="200" rx="10" fill="#1e344b"/>
+              <rect x="90" y="92" width="110" height="60" rx="6" fill="#2f5074"/>
+              <rect x="90" y="168" width="80" height="10" rx="5" fill="#3a5d83"/>
+              <rect x="90" y="188" width="100" height="10" rx="5" fill="#2f5074"/>
+              <g>
+                <circle cx="400" cy="120" r="30" fill="#f0c7a1"/>
+                <rect x="370" y="150" width="60" height="90" rx="14" fill="#e63946"/>
+                <rect x="330" y="180" width="50" height="14" rx="7" fill="#26405c"/>
+                <rect x="430" y="176" width="90" height="60" rx="10" fill="#26405c" stroke="#4a6f96"/>
+                <circle cx="470" cy="206" r="18" fill="#ffd166"/>
+              </g>
+              <g fill="#4a6f96" opacity=".7">
+                <rect x="200" y="280" width="260" height="8" rx="4"/>
+                <rect x="240" y="300" width="180" height="8" rx="4"/>
+              </g>
+            </svg>
+            <span class="bk-thumb-play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5l12 7-12 7z"/></svg></span>
+          </div>
+          <div class="bk-card-body">
+            <h3>赛事爆料怎么拍才不被拦：七个可复用的现场沟通话术</h3>
+            <p>从入口安检到混采区，稳定器不是关键，说明来意才是关键。这条视频把我们过去两年最有效的沟通模板整理成七句话。</p>
+            <div class="bk-tags"><span class="bk-tag">实用技巧</span><span class="bk-tag">拍摄现场</span><span class="bk-tag">沟通</span></div>
+            <div class="bk-card-foot">
+              <span class="bk-author">手持机的小柯</span>
+              <span>播放 8.6万</span>
+              <div class="bk-actions">
+                <button class="bk-act" type="button" data-bk-like><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.4-7-9.5A4.5 4.5 0 0 1 12 8a4.5 4.5 0 0 1 7 3.5C19 16.6 12 21 12 21z"/></svg><span>1.2万</span></button>
+                <button class="bk-act" type="button" data-bk-fav><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4l2.6 5.6 6 .6-4.5 4 1.3 5.8L12 17.8 6.6 20l1.3-5.8L3.4 10.2l6-.6z"/></svg><span>收藏</span></button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bk-card">
+          <div class="bk-thumb">
+            <span class="bk-thumb-tag">深度测评</span>
+            <svg viewBox="0 0 640 360" role="img" aria-label="三种便携摄像机并排摆放的测评对比画面">
+              <rect width="640" height="360" fill="#f1f5fa"/>
+              <rect x="0" y="250" width="640" height="110" fill="#dfe8f2"/>
+              <g>
+                <rect x="60" y="110" width="140" height="110" rx="12" fill="#22364d"/>
+                <circle cx="130" cy="165" r="30" fill="#3d5f86"/><circle cx="130" cy="165" r="16" fill="#8fb2d6"/>
+                <rect x="80" y="228" width="100" height="10" rx="5" fill="#b8c8da"/>
+              </g>
+              <g>
+                <rect x="250" y="90" width="150" height="130" rx="12" fill="#e63946"/>
+                <circle cx="325" cy="155" r="34" fill="#ffd166"/><circle cx="325" cy="155" r="18" fill="#c1121f"/>
+                <rect x="270" y="228" width="110" height="10" rx="5" fill="#b8c8da"/>
+              </g>
+              <g>
+                <rect x="450" y="120" width="130" height="100" rx="12" fill="#2f6f5e"/>
+                <rect x="470" y="140" width="90" height="50" rx="6" fill="#9fd8c4"/>
+                <rect x="470" y="228" width="90" height="10" rx="5" fill="#b8c8da"/>
+              </g>
+              <g fill="#22364d" opacity=".6">
+                <rect x="60" y="272" width="520" height="8" rx="4"/>
+              </g>
+            </svg>
+          </div>
+          <div class="bk-card-body">
+            <h3>三台便携机横评：夜场、混采、观众席，谁更适合日常爆料</h3>
+            <p>我们带着三台不同价位的设备跑了同一场夜赛，从暗部噪点、收音指向性到贴身携带的便利度做横向对比。</p>
+            <div class="bk-tags"><span class="bk-tag">器材测评</span><span class="bk-tag">夜场拍摄</span><span class="bk-tag">对比</span></div>
+            <div class="bk-card-foot">
+              <span class="bk-author">器材控阿哲</span>
+              <span>播放 12.4万</span>
+              <div class="bk-actions">
+                <button class="bk-act" type="button" data-bk-like><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.4-7-9.5A4.5 4.5 0 0 1 12 8a4.5 4.5 0 0 1 7 3.5C19 16.6 12 21 12 21z"/></svg><span>2.1万</span></button>
+                <button class="bk-act" type="button" data-bk-fav><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4l2.6 5.6 6 .6-4.5 4 1.3 5.8L12 17.8 6.6 20l1.3-5.8L3.4 10.2l6-.6z"/></svg><span>收藏</span></button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="bk-vlist" style="margin-top:22px">
+        <article class="bk-vitem">
+          <span class="bk-vitem-rank">01</span>
+          <div>
+            <h3>赛后混采区实录：主教练三分钟回应五个问题</h3>
+            <p>没有剪辑的连续三分钟，包含两次追问与一次沉默。爆料人保留了原始录音时间轴，便于观众自行判断语境。</p>
+            <div class="bk-tags"><span class="bk-tag">人物访谈</span><span class="bk-tag">赛后声音</span></div>
+          </div>
+          <div class="bk-vitem-side">
+            <span>播放 15.3万 · 点赞 2.6万</span>
+            <button class="bk-act" type="button" data-bk-like><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.4-7-9.5A4.5 4.5 0 0 1 12 8a4.5 4.5 0 0 1 7 3.5C19 16.6 12 21 12 21z"/></svg><span>点赞</span></button>
+          </div>
+        </article>
+        <article class="bk-vitem">
+          <span class="bk-vitem-rank">02</span>
+          <div>
+            <h3>后台记分牌故障后的六分钟：技术台是怎么恢复的</h3>
+            <p>这段素材来自一位愿意署名的技术人员。他用界面录屏加旁白，解释了备用系统切换与人工记录并行的完整流程。</p>
+            <div class="bk-tags"><span class="bk-tag">幕后技术</span><span class="bk-tag">流程科普</span></div>
+          </div>
+          <div class="bk-vitem-side">
+            <span>播放 9.7万 · 点赞 1.4万</span>
+            <button class="bk-act" type="button" data-bk-like><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.4-7-9.5A4.5 4.5 0 0 1 12 8a4.5 4.5 0 0 1 7 3.5C19 16.6 12 21 12 21z"/></svg><span>点赞</span></button>
+          </div>
+        </article>
+        <article class="bk-vitem">
+          <span class="bk-vitem-rank">03</span>
+          <div>
+            <h3>看台视角：一次整齐的加油声是怎么被组织起来的</h3>
+            <p>从预热到统一节拍，观众席的“第十二人”其实有明确分工。视频附有现场分贝变化与指挥手势图解。</p>
+            <div class="bk-tags"><span class="bk-tag">城市现场</span><span class="bk-tag">观赛文化</span></div>
+          </div>
+          <div class="bk-vitem-side">
+            <span>播放 7.1万 · 点赞 9,830</span>
+            <button class="bk-act" type="button" data-bk-like><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.4-7-9.5A4.5 4.5 0 0 1 12 8a4.5 4.5 0 0 1 7 3.5C19 16.6 12 21 12 21z"/></svg><span>点赞</span></button>
+          </div>
+        </article>
+        <article class="bk-vitem">
+          <span class="bk-vitem-rank">04</span>
+          <div>
+            <h3>报名攻略：冬季冠军赛爆料专区怎么过审最快</h3>
+            <p>我们把近三个月被退回的 60 份投稿做了归类，发现八成问题集中在素材来源说明与时间地点标注上。</p>
+            <div class="bk-tags"><span class="bk-tag">报名攻略</span><span class="bk-tag">投稿规范</span></div>
+          </div>
+          <div class="bk-vitem-side">
+            <span>播放 6.4万 · 点赞 8,120</span>
+            <button class="bk-act" type="button" data-bk-like><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.4-7-9.5A4.5 4.5 0 0 1 12 8a4.5 4.5 0 0 1 7 3.5C19 16.6 12 21 12 21z"/></svg><span>点赞</span></button>
+          </div>
+        </article>
+        <article class="bk-vitem">
+          <span class="bk-vitem-rank">05</span>
+          <div>
+            <h3>运动员的一天：上午复健、下午技术课、晚上视频复盘</h3>
+            <p>由本人授权拍摄的生活纪录，呈现赛季中段的作息与饮食安排，也回应了外界关于训练强度的疑问。</p>
+            <div class="bk-tags"><span class="bk-tag">日常记录</span><span class="bk-tag">健康运动</span></div>
+          </div>
+          <div class="bk-vitem-side">
+            <span>播放 11.8万 · 点赞 1.9万</span>
+            <button class="bk-act" type="button" data-bk-like><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.4-7-9.5A4.5 4.5 0 0 1 12 8a4.5 4.5 0 0 1 7 3.5C19 16.6 12 21 12 21z"/></svg><span>点赞</span></button>
+          </div>
+        </article>
+        <article class="bk-vitem">
+          <span class="bk-vitem-rank">06</span>
+          <div>
+            <h3>赛区交通指南：三条返程路线与散场后 40 分钟实测</h3>
+            <p>结合本赛季七个比赛日的实测数据，给出不同看台区域观众的最优离场路径，附步行与接驳耗时对照。</p>
+            <div class="bk-tags"><span class="bk-tag">实用攻略</span><span class="bk-tag">交通</span></div>
+          </div>
+          <div class="bk-vitem-side">
+            <span>播放 5.2万 · 点赞 6,410</span>
+            <button class="bk-act" type="button" data-bk-like><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.4-7-9.5A4.5 4.5 0 0 1 12 8a4.5 4.5 0 0 1 7 3.5C19 16.6 12 21 12 21z"/></svg><span>点赞</span></button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S4 专题企划 ===== -->
+  <section class="bk-section" id="bk-topic">
+    <div class="bk-wrap">
+      <div class="bk-section-head">
+        <span class="bk-eyebrow">Special 专题企划</span>
+        <h2 class="bk-h2">三个持续更新的<span class="bk-keyword">爆料专题</span>企划</h2>
+        <p class="bk-sub">专题由编辑组与认证爆料人共同维护，每条内容都标注更新状态与责任人，接受社区投票与反馈。</p>
+      </div>
+
+      <div class="bk-grid-3">
+        <article class="bk-topic">
+          <h3>冠军赛前夜</h3>
+          <p>聚焦决赛周的场外气氛与队伍临场准备，连续 14 天更新，已上线 21 条现场素材。</p>
+          <span class="bk-topic-status">更新中 · 第 11 天</span>
+          <ul class="bk-topic-list">
+            <li><em>01</em>更衣室走廊的十二小时</li>
+            <li><em>02</em>教练最后一次战术板讲解</li>
+            <li><em>03</em>替补席上的低声对话</li>
+          </ul>
+        </article>
+        <article class="bk-topic" style="background:linear-gradient(140deg,#2a3d55,#16202f)">
+          <h3>规则对照室</h3>
+          <p>把争议判罚变成可学习的样本，每期邀请裁判或退役运动员逐帧讲解，配可下载的规则要点卡片。</p>
+          <span class="bk-topic-status">更新中 · 已 9 期</span>
+          <ul class="bk-topic-list">
+            <li><em>01</em>出界判定的三个参考帧</li>
+            <li><em>02</em>合理对抗与犯规的边界</li>
+            <li><em>03</em>暂停申请的时间点陷阱</li>
+          </ul>
+        </article>
+        <article class="bk-topic" style="background:linear-gradient(140deg,#3a2430,#1b1420)">
+          <h3>看台第十二人</h3>
+          <p>记录观众席的组织、歌声与城市记忆，收录来自 16 个赛区的观赛文化短片，适合慢节奏观看。</p>
+          <span class="bk-topic-status">征集中 · 待投票 7 条</span>
+          <ul class="bk-topic-list">
+            <li><em>01</em>客场远征大巴的凌晨四点</li>
+            <li><em>02</em>一位连续 27 场的现场观赛者</li>
+            <li><em>03</em>把加油声做成节拍器的鼓手</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S5 创作者矩阵（双列简介） ===== -->
+  <section class="bk-section" id="bk-authors" style="background:#e9eef6">
+    <div class="bk-wrap">
+      <div class="bk-section-head">
+        <span class="bk-eyebrow">Creators 爆料人矩阵</span>
+        <h2 class="bk-h2">认证<span class="bk-keyword">创作者</span>：把现场带回社区的人</h2>
+        <p class="bk-sub">六位长期供稿的认证爆料人，覆盖 filming、规则解读、人物访谈与城市观察；点击头像可查看完整档案。</p>
+      </div>
+
+      <div class="bk-grid-2">
+        <article class="bk-author-card">
+          <div class="bk-author-top">
+            <span class="bk-avatar" style="background:linear-gradient(135deg,#e63946,#a4161a)">看</span>
+            <div>
+              <h3>看台第三排</h3>
+              <span>擅长：现场回传 · 多机位复盘</span>
+            </div>
+          </div>
+          <p>体育院校摄影专业毕业，连续三个赛季跟拍区域联赛。习惯同时使用手机与便携机记录同一现场，主张“先保住原始素材，再做叙事”。累计上传 218 条现场素材，其中 37 条被编辑组选为焦点。</p>
+          <div class="bk-author-nums"><span>作品 <b>218</b></span><span>粉丝 <b>4.6万</b></span></div>
+          <button class="bk-author-link" type="button" data-bk-author="看台第三排|连续三个赛季跟拍区域联赛，主攻现场回传与多机位复盘。他在爆料规范中推动建立了“双机位留存”条款，被社区称为最较真的记录者。|218|4.6万">查看档案 →</button>
+        </article>
+
+        <article class="bk-author-card">
+          <div class="bk-author-top">
+            <span class="bk-avatar" style="background:linear-gradient(135deg,#22364d,#4a6f96)">器</span>
+            <div>
+              <h3>器材控阿哲</h3>
+              <span>擅长：器材测评 · 拍摄教程</span>
+            </div>
+          </div>
+          <p>从录像带时代开始拍摄赛事，做过十年电视转播技术。如今专注把专业器材知识翻译成普通观众能懂的语言，每月发布一期横评，所有样片均公开原始参数与拍摄手记。</p>
+          <div class="bk-author-nums"><span>作品 <b>96</b></span><span>粉丝 <b>3.1万</b></span></div>
+          <button class="bk-author-link" type="button" data-bk-author="器材控阿哲|十年赛事转播技术出身，专注器材横评与拍摄教学。坚持公开每期样片的原始参数，是平台器材类内容的技术审核顾问。|96|3.1万">查看档案 →</button>
+        </article>
+
+        <article class="bk-author-card">
+          <div class="bk-author-top">
+            <span class="bk-avatar" style="background:linear-gradient(135deg,#2f6f5e,#7fb69f)">哨</span>
+            <div>
+              <h3>规则小哨</h3>
+              <span>擅长：规则科普 · 判罚解读</span>
+            </div>
+          </div>
+          <p>国家级裁判，比赛日之外在平台做规则科普。她的“三帧判罚”栏目坚持只讲可核对的事实，不评价具体裁判。视频下方常附规则原文页码，方便观众自行查证。</p>
+          <div class="bk-author-nums"><span>作品 <b>74</b></span><span>粉丝 <b>5.8万</b></span></div>
+          <button class="bk-author-link" type="button" data-bk-author="规则小哨|国家级裁判，运营“三帧判罚”栏目。内容以规则原文与逐帧画面为依据，不评价具体判罚主体，被社区视为理性讨论的基准线。|74|5.8万">查看档案 →</button>
+        </article>
+
+        <article class="bk-author-card">
+          <div class="bk-author-top">
+            <span class="bk-avatar" style="background:linear-gradient(135deg,#ffd166,#e0a800)">手</span>
+            <div>
+              <h3>手持机的小柯</h3>
+              <span>擅长：现场沟通 · 拍摄幕后</span>
+            </div>
+          </div>
+          <p>自由摄影师，擅于在规则边界内拿到别人拿不到的镜头。他把每一次沟通都整理成话术模板并免费公开，认为爆料不是猎奇，而是把事情说清楚。上传量稳定但极少追热点。</p>
+          <div class="bk-author-nums"><span>作品 <b>132</b></span><span>粉丝 <b>2.4万</b></span></div>
+          <button class="bk-author-link" type="button" data-bk-author="手持机的小柯|自由摄影师，主攻现场沟通与幕后记录。公开七套沟通话术模板，主张在规则边界内把细节拍清楚，是平台现场类内容的主要供稿人之一。|132|2.4万">查看档案 →</button>
+        </article>
+
+        <article class="bk-author-card">
+          <div class="bk-author-top">
+            <span class="bk-avatar" style="background:linear-gradient(135deg,#5b4b8a,#8f7dd1)">座</span>
+            <div>
+              <h3>替补席观察员</h3>
+              <span>擅长：人物访谈 · 队伍故事</span>
+            </div>
+          </div>
+          <p>曾在青训队做助理教练，了解队伍内部的真实节奏。他的访谈很少追问争议，更关心队员如何睡觉、怎么吃饭、怎样面对一场难以翻盘的比赛。代表作《训练场熄灯之后》播放过百万。</p>
+          <div class="bk-author-nums"><span>作品 <b>61</b></span><span>粉丝 <b>3.7万</b></span></div>
+          <button class="bk-author-link" type="button" data-bk-author="替补席观察员|青训队助理教练出身，擅长人物访谈与队伍故事。作品关注队员的日常节律与心理状态，代表作《训练场熄灯之后》长期位列站点口碑榜前列。|61|3.7万">查看档案 →</button>
+        </article>
+
+        <article class="bk-author-card">
+          <div class="bk-author-top">
+            <span class="bk-avatar" style="background:linear-gradient(135deg,#b5651d,#e09a55)">城</span>
+            <div>
+              <h3>赛道边的小满</h3>
+              <span>擅长：城市探索 · 观赛文化</span>
+            </div>
+          </div>
+          <p>本地生活博主，从公共交通、饮食与街区角度记录比赛日。她相信一座城市承办大赛的能力，藏在凌晨的接驳车与深夜仍亮着灯的小店里。每期视频都会附一份可步行路线图。</p>
+          <div class="bk-author-nums"><span>作品 <b>103</b></span><span>粉丝 <b>4.1万</b></span></div>
+          <button class="bk-author-link" type="button" data-bk-author="赛道边的小满|本地生活博主，以城市探索与观赛文化为主要方向。每期视频附带可步行路线与补给建议，让外地观众也能按图索骥地感受比赛日的城市节奏。|103|4.1万">查看档案 →</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S6 热度榜 + 用户评价 ===== -->
+  <section class="bk-section" id="bk-rank">
+    <div class="bk-wrap">
+      <div class="bk-section-head">
+        <span class="bk-eyebrow">Ranking 数据榜单</span>
+        <h2 class="bk-h2">本周<span class="bk-keyword">大赛爆料</span>热度榜与社区评价</h2>
+        <p class="bk-sub">榜单依据播放完成度、互动率与编辑组复核结果综合计算，每周一上午更新，历史榜单可追溯。</p>
+      </div>
+
+      <div class="bk-grid-2">
+        <div class="bk-card" style="padding:22px 24px">
+          <h3 style="font-size:17px;color:var(--bk-navy);margin-bottom:14px">热度榜 · 第 46 周</h3>
+          <ul class="bk-rank">
+            <li><b>1</b><span class="bk-rank-name">决赛第七分钟改判完整过程</span><span class="bk-rank-bar"><i style="width:96%"></i></span></li>
+            <li><b>2</b><span class="bk-rank-name">更衣室里的第十二小时</span><span class="bk-rank-bar"><i style="width:88%"></i></span></li>
+            <li><b>3</b><span class="bk-rank-name">三台便携机夜场横评</span><span class="bk-rank-bar"><i style="width:79%"></i></span></li>
+            <li><b>4</b><span class="bk-rank-name">训练场熄灯之后</span><span class="bk-rank-bar"><i style="width:71%"></i></span></li>
+            <li><b>5</b><span class="bk-rank-name">看台加油声的组织方法</span><span class="bk-rank-bar"><i style="width:63%"></i></span></li>
+            <li><b>6</b><span class="bk-rank-name">记分牌故障后的六分钟</span><span class="bk-rank-bar"><i style="width:57%"></i></span></li>
+            <li><b>7</b><span class="bk-rank-name">冬季冠军赛报名攻略</span><span class="bk-rank-bar"><i style="width:48%"></i></span></li>
+            <li><b>8</b><span class="bk-rank-name">客场远征大巴的凌晨四点</span><span class="bk-rank-bar"><i style="width:41%"></i></span></li>
+          </ul>
+        </div>
+
+        <div style="display:grid;gap:14px">
+          <div class="bk-cmt bk-quote">
+            <p>“我把这个平台当成赛季备忘录。改判那次我人在现场但什么都没看清，回家看完三机位版本才真正明白发生了什么。”</p>
+            <div class="bk-cmt-from"><span class="bk-cmt-dot" style="background:#e63946">林</span>林间看台 · 连续观赛 6 年</div>
+          </div>
+          <div class="bk-cmt">
+            <p>投稿流程比想象中清楚。我把素材时间、地点、来源写全，第三天就收到了复核反馈，还指出了我素材里一处时间标注有误。</p>
+            <div class="bk-cmt-from"><span class="bk-cmt-dot" style="background:#22364d">许</span>许工 · 首次投稿的普通观众</div>
+          </div>
+          <div class="bk-cmt">
+            <p>器材横评那期我看了三遍，最有用的是暗部噪点的对比片段，没有堆参数，直接给画面。建议以后多加一段手持防抖的实拍。</p>
+            <div class="bk-cmt-from"><span class="bk-cmt-dot" style="background:#2f6f5e">陈</span>陈小满 · 校队随队摄影</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bk-grid-2" style="margin-top:22px">
+        <div class="bk-cmt">
+          <p>规则小哨的栏目救了我很多次争论。她只贴规则原文和画面帧，不讲“我觉得”，这种克制非常难得。</p>
+          <div class="bk-cmt-from"><span class="bk-cmt-dot" style="background:#5b4b8a">周</span>周队 · 业余联赛裁判</div>
+        </div>
+        <div class="bk-cmt">
+          <p>希望移动端能增加“只看图文摘要”的模式，有时候在通勤路上不方便看视频，但又想知道今天爆了什么。</p>
+          <div class="bk-cmt-from"><span class="bk-cmt-dot" style="background:#b5651d">吴</span>吴一凡 · 通勤观众</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S7 关键词深度解析（800 字以上） ===== -->
+  <section class="bk-section" id="bk-guide" style="background:#eef2f8">
+    <div class="bk-wrap">
+      <div class="bk-section-head">
+        <span class="bk-eyebrow">Deep Dive 深度解析</span>
+        <h2 class="bk-h2">读懂<span class="bk-keyword">大赛每日在线爆料平台</span>：赛事爆料为什么值得被认真对待</h2>
+        <p class="bk-sub">这不是一篇使用说明，而是我们对自己所处行业的长期观察，也是这个品牌企业愿意公开的方法论。</p>
+      </div>
+
+      <div class="bk-article">
+        <h3>一、爆料不是抢快，而是把现场还原到可核对的精度</h3>
+        <p>很多人第一次听到“大赛每日在线爆料平台”，会以为这是一个专门放送突发消息的通道。但在我们的理解里，爆料的核心竞争力从来不是比谁早三分钟，而是比谁能在更短的时间内把现场还原到可核对的精度。一场比赛从入场到散场，发生的动作数以万计，观众真正记住的往往只有比分和几个争议瞬间。爆料平台的价值，是补上这中间被忽略的部分：谁在什么时候说了什么，裁判是在哪个角度做出判断，技术台为什么在那六分钟里临时改用手工记录。这些内容无法靠单一视角完成，需要多机位、多信源与明确的交叉验证。</p>
+        <p>因此我们把“每日在线”理解为一种节奏承诺，而不是数量承诺。每天更新的条目数并不是越多越好，关键在于每条都能被追溯。平台目前对现场类内容实行三档标注：原始素材、编辑整理、深度复盘。原始素材保留完整时间轴与拍摄者署名，编辑整理会说明剪辑取舍，深度复盘则必须列出至少两个独立信源。这样的分层让不同需求的观众各取所需，也让爆料人清楚自己的素材处在哪个环节。作为一家深耕赛事内容垂直领域的企业，我们更愿意把这件事做慢一点、做扎实一点。</p>
+
+        <h3>二、内容生态的关键，是让爆料人愿意署名</h3>
+        <p>爆料内容长期面临一个结构性难题：越是有价值的现场素材，拍摄者越可能担心被追问、被质疑甚至被误解。如果平台只追求话题度，爆料人就会逐渐退到匿名之后，素材质量也会随之下滑。我们的做法是把署名权与保护机制一起写进社区规则。投稿入口允许选择实名、化名与完全匿名三种方式，实名爆料人在内容通过复核后可获得创作者认证、作品页与流量分成，匿名条目则由编辑组承担信源核验责任，并在页面明确标注“信源受保护”。</p>
+        <p>这套机制运行一年多后，一个明显变化是长素材变多了。过去很多人只愿意发十几秒的片段，现在越来越多爆料人会提交十分钟以上的连续记录，因为他们知道平台不会为了流量把素材剪成情绪化的对立。创作者矩阵中的六位认证爆料人，正是在这样的环境下稳定供稿的。他们当中有人专注规则解读，有人专拍城市与看台文化，也有人只做人物访谈。方向不同，但共同点是愿意为自己的名字负责。这正是我们希望构建的内容生态：多元、包容、鼓励真实表达，同时让每一次发布都经得起回看。</p>
+
+        <h3>三、“每日在线”背后的运营标准与社会责任</h3>
+        <p>日更是一个很容易被说出口、却很难被长期兑现的目标。为了保证每天都有可发布的高质量条目，我们把运营拆成前置线索池、当日复核、次日追踪三条并行流水线。线索池由投稿入口、社区投票与合作赛区共同供给；当日复核由两名编辑与一名外部观察员完成，重点核验时间、地点、人物与素材来源；次日追踪则负责对已发布内容做补充与更正。任何一条更正都会保留修改记录，观众可以在条目下方看到“已更正”标识与说明。我们相信，值得信赖的爆料平台不是从不犯错，而是错了能被看见、能被改。</p>
+        <p>社会责任感在这个行业里不是抽象口号。涉及未成年运动员、伤情细节与个人隐私的素材，平台设有明确的延时与打码规则；涉及正在进行的纪律调查，我们只发布已被官方渠道确认的信息，不做推测性叙述。这些规则会让部分内容显得不够“炸”，但它们决定了这个社区能不能持续运营下去。用户至上是我们的第一原则，但用户至上不等于迎合情绪，而是对观众的判断力保持尊重。</p>
+
+        <h3>四、从一次爆料到一份长期档案</h3>
+        <p>单个爆料的生命周期通常很短，热搜过去之后很少有人再回看。但我们认为，这些现场记录叠加起来，会构成一项有价值的社会档案。为此平台正在建设可检索的赛事影像索引，按赛季、赛区、赛项与人物四个维度归档，并向学校、青训机构与研究者开放申请。对普通观众而言，这意味着你可以沿着一位运动员的三年影像，看到他技术动作的细微变化；对行业而言，这是一份关于判罚尺度、训练方式与观赛文化的长期样本。</p>
+        <p>我们并不认为自己在做一件宏大的事。每天更新的仍是具体的、琐碎的、甚至有些笨拙的现场记录：一段没对准焦的画面，一次被风吹乱的收音，一位工作人员匆匆走过镜头。但正是这些不完美的素材，让比赛从抽象的比分回到具体的人。这也是“大赛每日在线爆料平台”这个名字最终想表达的意思——大赛每天都在发生，爆料的价值是让它被看见、被理解、被记住。作为官方网站与企业运营方，我们会继续坚持原创正版与高清标准，把品质与口碑放在增长速度之前，用持续运营回应每一份信任。</p>
+
+        <div class="bk-note">
+          本解析由平台编辑组维护，随社区规则更新同步修订。若你发现文中有与现行规则不一致的表述，欢迎通过投稿入口反馈，我们会在一周内完成核对与更正。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S7b 企业动态 + 合作品牌 ===== -->
+  <section class="bk-section" id="bk-news">
+    <div class="bk-wrap">
+      <div class="bk-section-head">
+        <span class="bk-eyebrow">Newsroom 企业动态</span>
+        <h2 class="bk-h2">官方发布与<span class="bk-keyword">企业动态</span></h2>
+        <p class="bk-sub">品牌资讯、规则更新与合作进展，均以官方发布形式在此留档，便于社区查阅。</p>
+      </div>
+
+      <div class="bk-news">
+        <article class="bk-news-item">
+          <span class="bk-news-date">11-22</span>
+          <div>
+            <h3>「现场回传」通道正式上线，支持多机位素材合并提交</h3>
+            <p>投稿入口新增时间轴对齐功能，爆料人可一次上传同场次的多段素材并标注机位，编辑组复核效率预计提升约 40%。</p>
+          </div>
+        </article>
+        <article class="bk-news-item">
+          <span class="bk-news-date">11-18</span>
+          <div>
+            <h3>冬季冠军赛爆料专区开启报名，首批开放 120 个认证名额</h3>
+            <p>面向长期供稿的爆料人与新投稿者同时开放，报名需提交一份不少于 3 分钟的现场样片与素材来源说明。</p>
+          </div>
+        </article>
+        <article class="bk-news-item">
+          <span class="bk-news-date">11-12</span>
+          <div>
+            <h3>社区规则 3.2 版发布：明确伤情素材延时与未成年人保护条款</h3>
+            <p>新版规则细化了涉及个人隐私内容的处理流程，并引入外部观察员参与争议条目复核，全文已在帮助中心公开。</p>
+          </div>
+        </article>
+        <article class="bk-news-item">
+          <span class="bk-news-date">11-05</span>
+          <div>
+            <h3>与三家赛区达成内容合作，高清素材库新增 640 条赛史影像</h3>
+            <p>合作素材将标注来源与授权范围，仅用于非商业性的赛事回顾与规则科普，社区可申请教育用途调阅。</p>
+          </div>
+        </article>
+      </div>
+
+      <div style="margin-top:36px">
+        <h3 style="font-size:17px;color:var(--bk-navy);margin-bottom:16px">合作赛区与内容伙伴</h3>
+        <div class="bk-partners">
+          <div class="bk-partner">东城赛区<span>内容合作</span></div>
+          <div class="bk-partner">青训观察计划<span>影像共建</span></div>
+          <div class="bk-partner">高校传媒社<span>创作者培养</span></div>
+          <div class="bk-partner">城市步行指南<span>路线支持</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S7c 创作灵感 + 投稿 CTA ===== -->
+  <section class="bk-section" style="padding-top:0">
+    <div class="bk-wrap">
+      <div class="bk-cta">
+        <div>
+          <h2>你有现场，我们有版面</h2>
+          <p>无论是一段没对上焦的画面，还是一份完整的时间轴记录，都可以通过投稿入口进入线索池。平台承诺每条投稿都会在 72 小时内给出复核反馈，涉及隐私的内容可选择匿名发布。</p>
+          <div class="bk-tags" style="margin-top:14px">
+            <span class="bk-tag" style="background:rgba(255,255,255,.12);color:#dbe6f3">今日话题：赛前十二小时</span>
+            <span class="bk-tag" style="background:rgba(255,255,255,.12);color:#dbe6f3">报名倒计时 9 天</span>
+            <span class="bk-tag" style="background:rgba(255,255,255,.12);color:#dbe6f3">投票进行中</span>
+          </div>
+        </div>
+        <div class="bk-cta-actions">
+          <button class="bk-btn bk-btn-primary" type="button" data-bk-modal="submit">提交爆料线索</button>
+          <button class="bk-btn bk-btn-ghost" type="button" data-bk-modal="join" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.5)">加入创作者社区</button>
+        </div>
+      </div>
+
+      <div style="margin-top:22px" class="bk-grid-3">
+        <div class="bk-card" style="padding:18px 20px">
+          <h3 style="font-size:15.5px;color:var(--bk-navy);margin-bottom:6px">创作灵感 01</h3>
+          <p style="font-size:13.6px;color:var(--bk-muted)">拍赛前：把镜头对准通道、器材箱与座椅，安静的画面往往比欢呼更有信息量。</p>
+        </div>
+        <div class="bk-card" style="padding:18px 20px">
+          <h3 style="font-size:15.5px;color:var(--bk-navy);margin-bottom:6px">创作灵感 02</h3>
+          <p style="font-size:13.6px;color:var(--bk-muted)">剪复盘：先给结论，再回放关键帧，最后补规则原文，观众更容易跟上你的判断。</p>
+        </div>
+        <div class="bk-card" style="padding:18px 20px">
+          <h3 style="font-size:15.5px;color:var(--bk-navy);margin-bottom:6px">创作灵感 03</h3>
+          <p style="font-size:13.6px;color:var(--bk-muted)">写标题：用具体时间与地点代替情绪词，比如“第七分钟的那次改判”就比“太离谱”更耐读。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== S7d FAQ ===== -->
+  <section class="bk-section" id="bk-faq" style="background:#e9eef6">
+    <div class="bk-wrap">
+      <div class="bk-section-head">
+        <span class="bk-eyebrow">Help 帮助中心</span>
+        <h2 class="bk-h2">关于<span class="bk-keyword">大赛每日在线爆料平台</span>的常见问题</h2>
+        <p class="bk-sub">以下问题来自社区高频反馈，答案由运营团队维护，规则细节以帮助中心正式文本为准。</p>
+      </div>
+
+      <div class="bk-faq">
+        <details open>
+          <summary>投稿爆料需要具备什么条件？</summary>
+          <div class="bk-faq-body">年满 18 周岁即可投稿；未满 18 周岁需监护人同意并由平台人工核验。素材需为本人拍摄或已获授权，且能说明拍摄时间、地点与场景。涉及他人肖像的内容，平台会要求在发布前完成必要处理。</div>
+        </details>
+        <details>
+          <summary>为什么我的投稿没有立即上线？</summary>
+          <div class="bk-faq-body">所有现场类内容都会经过时间、地点、人物与来源四项核验。通常复核需要 24 至 72 小时，涉及争议话题或需要交叉验证的条目会更久。若未被采用，你会收到包含具体原因的反馈，而不是一句笼统的“未通过”。</div>
+        </details>
+        <details>
+          <summary>平台如何保护匿名爆料人？</summary>
+          <div class="bk-faq-body">匿名投稿的身份信息仅在内部核验环节可见，不进入任何对外数据表。发布时会标注“信源受保护”，编辑组承担后续核验责任。如出现法律层面的调取需求，平台会依法处理并在合规范围内告知投稿人。</div>
+        </details>
+        <details>
+          <summary>爆料内容可以商用吗？</summary>
+          <div class="bk-faq-body">平台发布的内容以原创正版为标准，署名权归属拍摄者。第三方如需转载，须通过页面提供的联系渠道申请授权并标注来源；商业用途需单独签署协议。平台自身也不会将投稿素材用于未告知的商业合作。</div>
+        </details>
+        <details>
+          <summary>“每日在线”具体指什么更新节奏？</summary>
+          <div class="bk-faq-body">指每个比赛日至少更新一组现场类内容，非比赛日更新规则解读、人物访谈或城市观察。遇到重大赛程，会开启图文实时更新条，重要节点附时间戳，便于观众回看。</div>
+        </details>
+        <details>
+          <summary>如何成为认证爆料人？</summary>
+          <div class="bk-faq-body">需在近 90 天内提交不少于 5 条通过复核的原创素材，并完成一次线上规则测试。认证后可获得专属作品页、流量分成与选题支持，同时需遵守更严格的更正与署名规范。</div>
+        </details>
+        <details>
+          <summary>发现已发布内容有误怎么办？</summary>
+          <div class="bk-faq-body">请通过反馈入口提交具体条目与更正依据。编辑组会在 48 小时内核对，确认有误后保留原文并附加“已更正”说明，不会静默删除。严重失实条目会下架并公示处理结果。</div>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== S8 页脚 ===== -->
+<footer class="bk-footer">
+  <div class="bk-wrap">
+    <div class="bk-footer-grid">
+      <div>
+        <div class="bk-footer-logo">
+          <span class="bk-logo-mark">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="7" y="9" width="18" height="13" rx="2.5" fill="none" stroke="#ff4d3d" stroke-width="2.2"/><path d="M14 13.5l6.5 2-6.5 2z" fill="#ffd166"/></svg>
+          </span>
+          <strong>大赛每日在线爆料平台</strong>
+        </div>
+        <p>聚焦赛事爆料的视频品牌企业，以官方网站与官方客户端为核心阵地，坚持原创正版与高清标准，为创作者、赛区与观众搭建值得信赖的内容生态。持续运营，用户至上。</p>
+      </div>
+      <div>
+        <h3>内容导航</h3>
+        <ul>
+          <li><a href="#bk-focus">爆点焦点</a></li>
+          <li><a href="#bk-stream">每日爆料</a></li>
+          <li><a href="#bk-topic">专题企划</a></li>
+          <li><a href="#bk-rank">热度榜</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>社区与帮助</h3>
+        <ul>
+          <li><a href="#bk-authors">爆料人矩阵</a></li>
+          <li><a href="#bk-guide">关键词深度解析</a></li>
+          <li><a href="#bk-faq">帮助中心</a></li>
+          <li><a href="#bk-news">企业动态</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>联系我们</h3>
+        <ul>
+          <li>商务合作：brand@baoliao-daily.example</li>
+          <li>内容反馈：editor@baoliao-daily.example</li>
+          <li>投稿咨询：工作日 10:00–19:00</li>
+          <li><button class="bk-author-link" type="button" data-bk-modal="submit" style="margin-top:0">前往投稿入口 →</button></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bk-footer-bottom">
+      <span>© 2026 大赛每日在线爆料平台 官方网站 · 版权所有 · 持续运营中</span>
+      <span>原创正版内容平台 · 高清视频社区 · 备案号示例：赛事内容备字第 2026-1122 号</span>
+    </div>
+  </div>
+</footer>
+
+<button class="bk-top" id="bkTop" aria-label="回到顶部">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V6M6 12l6-6 6 6"/></svg>
+</button>
+
+<!-- ===== 弹窗 ===== -->
+<div class="bk-modal-mask" id="bkModalMask">
+  <div class="bk-modal" role="dialog" aria-modal="true" aria-labelledby="bkModalTitle">
+    <button class="bk-modal-close" type="button" id="bkModalClose" aria-label="关闭弹窗">×</button>
+    <h3 id="bkModalTitle">提示</h3>
+    <p id="bkModalDesc"></p>
+    <div class="bk-modal-body" id="bkModalBody"></div>
+  </div>
+</div>
+<div class="bk-toast" id="bkToast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  "use strict";
+  var doc = document;
+  function qs(s, r){ return (r||doc).querySelector(s); }
+  function qsa(s, r){ return Array.prototype.slice.call((r||doc).querySelectorAll(s)); }
+
+  /* Toast */
+  var toastEl = qs('#bkToast');
+  var toastTimer = null;
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove('show'); }, 2200);
+  }
+
+  /* 移动端导航折叠 */
+  var burger = qs('#bkBurger');
+  var mobileNav = qs('#bkMobileNav');
+  burger.addEventListener('click', function(){
+    var open = mobileNav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  qsa('#bkMobileNav a').forEach(function(a){
+    a.addEventListener('click', function(){
+      mobileNav.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+    });
+  });
+
+  /* 搜索提示/筛选反馈 */
+  var searchInput = qs('#bkSearchInput');
+  var searchBtn = qs('#bkSearchBtn');
+  var mobileFb = qs('#bkSearchFeedbackMobile');
+  var searchPool = ['冠军赛前夜','更衣室里的第十二小时','三台便携机横评','规则对照室','看台第十二人','冬季冠军赛报名','看台第三排','器材控阿哲','规则小哨','热度榜第 46 周','投稿规范'];
+  function runSearch(){
+    var kw = (searchInput.value || '').trim();
+    if(!kw){
+      toast('请输入赛项、战队或爆料人关键词');
+      mobileFb.textContent = '';
+      return;
+    }
+    var hits = searchPool.filter(function(x){ return x.indexOf(kw) > -1; });
+    var msg = hits.length
+      ? '找到 ' + hits.length + ' 条相关爆料线索：' + hits.slice(0,3).join('、') + (hits.length>3?' 等':'')
+      : '暂未找到“' + kw + '”相关条目，已为你记录，编辑组会优先补充该赛项内容';
+    mobileFb.textContent = msg;
+    toast(msg);
+  }
+  searchBtn.addEventListener('click', runSearch);
+  searchInput.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){ e.preventDefault(); runSearch(); }
+  });
+
+  /* 点赞 +1 / -1 */
+  qsa('[data-bk-like]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var span = btn.querySelector('span');
+      var on = btn.classList.toggle('on');
+      if(span){
+        var raw = span.textContent.replace(/[^\d.]/g,'');
+        var num = parseFloat(raw);
+        if(!isNaN(num)){
+          var unit = span.textContent.indexOf('万') > -1 ? '万' : '';
+          var next = on ? num + (unit ? 0.1 : 1) : num - (unit ? 0.1 : 1);
+          if(next < 0) next = 0;
+          var fixed = unit ? (Math.round(next*10)/10) : Math.round(next);
+          span.textContent = fixed + unit;
+        } else {
+          span.textContent = on ? '已赞' : '点赞';
+        }
+      }
+      toast(on ? '已点赞，感谢支持原创爆料' : '已取消点赞');
+    });
+  });
+
+  /* 收藏状态切换 */
+  qsa('[data-bk-fav]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var on = btn.classList.toggle('on');
+      var svg = btn.querySelector('svg');
+      if(svg){
+        svg.setAttribute('fill', on ? 'currentColor' : 'none');
+      }
+      var span = btn.querySelector('span');
+      if(span){ span.textContent = on ? '已收藏' : '收藏'; }
+      toast(on ? '已加入收藏，可在个人中心查看' : '已取消收藏');
+    });
+  });
+
+  /* 分享：复制链接 + Toast（不读取任何域名信息） */
+  qsa('[data-bk-share]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var shareText = '大赛每日在线爆料平台 · 今日爆料：冠军赛前夜更衣室里的第十二小时';
+      function fallback(){
+        toast('分享内容：' + shareText);
+      }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(shareText).then(function(){
+          toast('分享文案已复制，可粘贴到微信、微博或 QQ');
+        }).catch(fallback);
+      } else {
+        fallback();
+      }
+    });
+  });
+
+  /* 弹窗通用 */
+  var mask = qs('#bkModalMask');
+  var mTitle = qs('#bkModalTitle');
+  var mDesc = qs('#bkModalDesc');
+  var mBody = qs('#bkModalBody');
+
+  var modalContent = {
+    submit: {
+      title: '提交爆料线索',
+      desc: '请尽量写清时间、地点、人物与素材来源，编辑组会在 72 小时内给出复核反馈。',
+      body: '<div class="bk-modal-field"><label for="bkF1">爆料标题</label><input id="bkF1" type="text" placeholder="例如：决赛第七分钟改判的完整过程"></div>'
+          + '<div class="bk-modal-field"><label for="bkF2">赛项 / 赛区</label><input id="bkF2" type="text" placeholder="例如：冬季冠军赛 · 东城赛区"></div>'
+          + '<div class="bk-modal-field"><label for="bkF3">素材说明</label><textarea id="bkF3" rows="3" placeholder="拍摄时间、机位、是否可署名、是否已获授权"></textarea></div>'
+          + '<div style="margin-top:16px"><button class="bk-btn bk-btn-primary" type="button" id="bkSubmitFake">提交并记录</button></div>'
+    },
+    join: {
+      title: '加入创作者社区',
+      desc: '认证爆料人可获得专属作品页、选题支持与流量分成，同时需遵守更严格的更正与署名规范。',
+      body: '<p>近 90 天内提交不少于 5 条通过复核的原创素材，并完成一次线上规则测试，即可申请认证。</p>'
+          + '<ul style="padding-left:18px;color:#4b5a6f;font-size:14px;line-height:1.9;margin-top:10px">'
+          + '<li>原创正版素材，可追溯来源</li><li>尊重当事人隐私与未成年人保护条款</li><li>接受社区投票与编辑复核</li></ul>'
+          + '<div style="margin-top:16px"><button class="bk-btn bk-btn-primary" type="button" id="bkJoinFake">提交加入申请</button></div>'
+    }
+  };
+
+  function openModal(key){
+    var data = modalContent[key];
+    if(!data) return;
+    mTitle.textContent = data.title;
+    mDesc.textContent = data.desc;
+    mBody.innerHTML = data.body;
+    mask.classList.add('open');
+    doc.body.style.overflow = 'hidden';
+    var fake = qs('#bkSubmitFake') || qs('#bkJoinFake');
+    if(fake){
+      fake.addEventListener('click', function(){
+        closeModal();
+        toast(key === 'submit' ? '线索已记录，编辑组将在 72 小时内复核' : '申请已提交，请留意站内通知');
+      });
+    }
+  }
+  function closeModal(){
+    mask.classList.remove('open');
+    doc.body.style.overflow = '';
+  }
+  qsa('[data-bk-modal]').forEach(function(btn){
+    btn.addEventListener('click', function(){ openModal(btn.getAttribute('data-bk-modal')); });
+  });
+  qs('#bkModalClose').addEventListener('click', closeModal);
+  mask.addEventListener('click', function(e){ if(e.target === mask) closeModal(); });
+  doc.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
+
+  /* 作者信息弹窗 */
+  qsa('[data-bk-author]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var parts = btn.getAttribute('data-bk-author').split('|');
+      mTitle.textContent = parts[0];
+      mDesc.textContent = '认证爆料人档案';
+      mBody.innerHTML = '<p>' + parts[1] + '</p>'
+        + '<div class="bk-author-nums" style="margin-top:14px"><span>作品 <b>' + parts[2] + '</b></span><span>粉丝 <b>' + parts[3] + '</b></span></div>'
+        + '<p style="margin-top:14px;font-size:13px;color:#8b99ab">档案信息由本人确认，平台每季度复核一次。</p>';
+      mask.classList.add('open');
+      doc.body.style.overflow = 'hidden';
+    });
+  });
+
+  /* 数据数字滚动 */
+  var counters = qsa('[data-bk-count]');
+  var counted = false;
+  function countUp(){
+    if(counted) return;
+    counted = true;
+    counters.forEach(function(el){
+      var target = parseInt(el.getAttribute('data-bk-count'), 10) || 0;
+      var start = 0;
+      var step = Math.max(1, Math.round(target / 42));
+      var timer = setInterval(function(){
+        start += step;
+        if(start >= target){ start = target; clearInterval(timer); }
+        el.textContent = start.toLocaleString('zh-CN');
+      }, 26);
+    });
+  }
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting) countUp(); });
+    }, {threshold:.4});
+    counters.forEach(function(el){ io.observe(el); });
+  } else {
+    countUp();
+  }
+
+  /* 回到顶部 */
+  var topBtn = qs('#bkTop');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 620){ topBtn.classList.add('show'); }
+    else { topBtn.classList.remove('show'); }
+  }, {passive:true});
+  topBtn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  /* 卡片悬停由 CSS 完成，这里补充键盘可达性与初始无脚本兜底 */
+  qsa('.bk-card, .bk-author-card').forEach(function(card){
+    card.setAttribute('tabindex','0');
+  });
+})();
+</script>
+</body>
+                  </html>
